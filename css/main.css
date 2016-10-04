@@ -1,0 +1,865 @@
+@import url('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
+
+body { 
+    
+	padding-top: 70px;
+    padding-right: 0px !important;
+    background-color: #f1c40f;
+    background-color: white;
+}
+
+#indexBody {
+    background-attachment: scroll;
+    background-color: white;
+    
+        background-position: center center;
+        background-repeat: none;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        background-attachment: fixed;
+}
+
+
+
+label {
+    display:inline-block;
+    width:100px;
+    margin-bottom:10px;
+}
+
+.date-form {
+    margin-bottom: 5px;
+}
+
+.mainMobile{
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+.label-as-badge {
+    border-radius: 1em;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:focus {
+    outline: 0;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.btn-home {
+    width: 160px;
+}
+
+.btn-info {
+    background-color: #2980b9;
+    border: solid 2px #2980b9;
+}
+
+.btn-info:hover {
+    background-color: navy; 
+    border: solid 2px navy;
+}
+
+
+.action-button {
+    width: 90px;
+}
+
+.form-control {
+    margin: 0px 5px 5px 0px;
+    width: 200px;
+}
+
+.input-group {
+    margin: 0px 5px 5px 0px;
+    width: 300px;
+}
+
+.form-control-text {
+    width: 300px;
+}
+
+.grid {
+  margin: 0 auto;
+}
+
+.grid-container {
+    position: relative; 
+    width: 90%; 
+    margin: -5px auto;
+}
+
+
+.grow {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.grow:hover, .grow:focus, .grow:active {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.one {
+    float: right;
+}
+
+.two{
+    float: left;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+::-webkit-input-placeholder {
+    font-family: sans-serif;
+    color: #b5b5b5;
+   
+}
+
+.edit {
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Righteous', cursive;
+    font-size: 65px;
+    color: #16a085;
+    color: #f1c40f;
+    color: #2980b9;
+
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    width:100%;
+color:#2980b9;
+font-size:45px;
+font-weight:900;
+padding:0;
+margin:0px;
+line-height:80px;
+
+}
+
+h4 {
+    font-family: 'Righteous', cursive;
+    font-size: 35px;
+    margin-bottom: -10px;
+    color: #2980b9;
+}
+
+h5 {
+    font-family: 'Righteous', cursive;
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: black;
+    color: #2980b9;
+    /*color: #e8e8b0 ;*/
+}
+
+.login {
+    margin-top:20%;
+    
+}
+
+/* code for animated blinking cursor */
+.typed-cursor{
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    -ms-animation: blink 0.7s infinite;
+    -o-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-ms-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-o-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.wrap{
+    margin:10% auto;
+    margin-bottom: 10px;
+    font-family: 'Righteous', cursive;
+    font-size: 100px;
+    color: #2980b9;
+}
+
+.type-wrap{
+    margin:10px auto;
+    padding:20px;
+    background:#f0f0f0;
+    border-radius:5px;
+    border:#CCC 1px solid;
+}
+
+.links{
+    margin:20px 0;
+    font-size: 0.75em;
+    text-align: center;
+}
+
+#loginBox {
+    display: none;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.item {
+  float: left;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+img {
+	max-width: 300px;
+	height: auto;
+	margin: 0 auto;
+    border-radius: 5px;
+}
+
+.astext:focus {
+    outline: none;
+}
+
+.mainMobile input:focus {
+    outline: none;
+}
+
+.mainMobile textarea:focus {
+    outline: none;
+}
+
+#mobileInput {
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    /*background-color: #efefef;*/
+    width: 220px;
+    height: 38px;
+    padding: 0 5px;
+}
+
+.mainPc input:focus {
+    outline: none;
+}
+
+.mainPc textarea:focus {
+    outline: none;
+}
+
+.desktopInput {
+    font-size: 18px;
+    border: none;
+    background-color: #efefef;
+    width: 220px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+.desktopInput2 {
+    font-size: 18px;
+    border: solid 2px darkgrey;
+    background-color: white;
+    width: 220px;
+    height: 35px;
+    padding: 0 5px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+
+.login-home label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: inline;
+    z-index: 99;
+    font-size: 18px;
+    color: black;
+    font-weight: 300;
+}
+
+.family-creation label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: inline;
+    z-index: 98;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+#desktopSignUpInput {
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    width: 220px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+.btn-file {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: darkgrey;
+    border: none;
+    background-color: #efefef;
+   
+    height: 35px;
+    padding: 0 10px;
+}
+
+#desktopInputButton {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: darkgrey;
+    border: none;
+    background-color: #efefef;
+    width: 70px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+#desktopInputButton:hover {
+    background-color: lightgrey;
+}
+
+.btn-green {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: #29b958; 
+    width: 180px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+.btn-green:hover {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-red {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: lightgrey; 
+    width: 180px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+.btn-red:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn-blue {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: #2980b9; 
+    width: 180px;
+    height: 35px;
+    padding: 0 5px;
+    width: 30px; height: 30px; margin-bottom: 4px; margin-left: 3px;
+}
+
+.btn-blue-inactive {
+    background-color: lightgrey;
+}
+
+.btn-blue:hover {
+    background-color: navy;
+    color: white;
+}
+
+.btn-blue-inactive:hover {
+    background-color: lightgrey;
+}
+
+.red {
+    background-color: red;
+}
+
+#unitInput {
+    text-align: center;
+}
+
+#signUpButton {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    border: none;
+    background-color: #f39c12;
+    width: 155px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+#signUpButton:hover {
+    background-color: lightgrey;
+}
+
+#whatIsThisButton {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    border: none;
+    background-color: #f39c12;
+    width: 155px;
+    height: 35px;
+    padding: 0 5px;
+}
+
+#whatIsThisButton:hover {
+    background-color: lightgrey;
+}
+
+.navbar-login {
+    /*background-color: #efefef;*/
+    background-color: white;
+    /*background-color: transparent;*/
+
+    padding-bottom: 5px;
+    border: none;
+    
+}
+
+.dropdownPc:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.cta {
+    margin-left: 400px;
+}
+
+#addUnitForm {
+    display: none;
+}
+
+#unitInput:focus{
+    outline: none;
+}
+
+#addUnitForm {
+    margin: 20px;
+    padding: 20px;
+}
+
+#addMemberForm {
+    display: none;
+}
+
+
+#addMemberForm {
+    margin: 20px;
+    padding: 20px;
+}
+
+
+/*-----------------------
+---- Preloader Styles ----
+-------------------------*/
+#page-loader{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    z-index: 99999;
+}
+
+#page-loader .page-loader-gif{
+    display: block;
+    width:100%;
+    height:64px;
+    position: absolute;
+    top:50%;
+    left:0;
+    margin:-32px 0 0;
+    font-size:21px;
+    line-height:58px;
+    font-family:Raleway;
+    font-weight:400;
+    text-align: center;
+    color:#aaa;
+    color:rgba(0,0,0,0.2);
+    background: url('../images/preloader.gif') 50% 0 no-repeat;    
+}
+.sidebar-outer {
+    position: relative;
+}
+
+.sidebar {
+    position: fixed;
+    margin-left: 20px;
+}
+
+.dropdown {
+    position: relative;
+    width: 300px;
+    outline: none;
+}
+.dropdown > .selected {
+    position: relative;
+}
+.dropdown.focus > .selected,
+.dropdown:focus > .selected {
+    outline: none;
+}
+
+.dropdown > .selected:hover,
+.dropdown > .selected:focus {
+    cursor: pointer;
+}
+.dropdown > .selected i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    line-height: 40px;
+}
+.dropdown.open > .selected {
+
+}
+.dropdown ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 1;
+    max-height: 300px;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+.dropdown ul li {
+    display: block;
+    cursor: pointer;
+}
+.dropdown ul li.selected {
+    
+}
+.dropdown ul li:last-child.selected {
+
+}
+.dropdown ul li {
+    position: relative;
+    display: block;
+}
+
+.dropdown ul li.hover { 
+
+}
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.panel {
+    border: solid 0px white;
+}
+
+.panel-heading {
+    cursor: pointer;
+}
+
+.email {
+    width: 325px;
+    margin-right: 100px;
+}
+
+.email1 {
+    display: block;
+    float: left;
+    padding-top: 8px;
+    padding-left: 55px;
+}
+
+.email2 {
+    display: block;
+    float: left;
+    padding-top: 8px;
+    padding-left: 18px;
+}
+
+.email3 {
+    display: block;
+    float: left;
+    padding-top: 8px
+}
+
+.modal {
+    width: 850px;
+    margin: 10% auto;
+}
+
+.inputError {
+    background-color: pink;
+}
+
+.generalInput {
+    padding:10px 0 10px 3%; 
+    width:80%; 
+    margin:0 0 20px 5%;
+    border:none;
+    border-bottom:1px solid #d6d6d6;
+    background:none;
+    color:#b7bec2;
+    -webkit-appearance: none;
+}
+
+@media (max-width: 1025px) {
+
+    /*#indexBody {
+        background-image: none;
+        background-color: #efefef;
+    }*/
+
+    .grid-container {
+        position: relative; 
+        width: 100%; 
+        margin: -5px auto;
+    }
+
+    img {
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .cta {
+    margin-left: 230px;
+    }
+
+}   
+
+@media (max-width: 801px) {
+    .mainPc {
+        display: none;
+    }
+    .mainMobile {
+        display: inline-block;
+    }
+    .mobile {
+        display: inline;
+    }
+    body { 
+        padding-top: 20px;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+    .grid-container {
+        position: relative; 
+        width: 100%; 
+        margin: 10px auto;
+    }
+
+    img {
+        max-width: 340px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .cta {
+        margin-left: 400px;
+    }
+
+
+} 
+
+@media (max-width: 770px) {
+    #familyName h2{
+        font-size: 35px;
+    }
+    .cta {
+        margin-left: 385px;
+    }
+}   
+
+@media (max-width: 740px) {
+    .mainPc {
+        display: none;
+    }
+    .mainMobile {
+        display: inline-block;
+    }
+    .mobile {
+        display: inline;
+    }
+
+    .grid-container {
+        position: relative; 
+        width: 100%; 
+        margin: 8px auto;
+    }
+
+    img {
+        max-width: 170px;
+        height: auto;
+        margin: -3px auto;
+        border-radius: 5px;
+    }
+    .cta {
+        margin-left: 390px;
+    }
+
+}  
+
+@media (max-width: 670px) {
+    .cta {
+        margin-left: 465px;
+    }
+} 
+
+@media (max-width: 602px) {
+    .cta {
+        margin-left: 400px;
+    }
+} 
+
+@media (max-width: 570px) {
+    .cta {
+        margin-left: 370px;
+    }
+    .email {
+        width: 250px;
+        margin-right: 0px;
+    }
+    .modal {
+        width: 340px;
+        margin: 10% auto; 
+    }
+    .mobileView {
+        font-size: 32px;
+    }
+} 
+
+@media (max-width: 376px) {
+    .cta {
+        margin-left: 175px;
+    }
+} 
+
+
+@media (max-width: 321px) {
+    .mainPc{
+        display: none;
+    }
+
+    .iPhone6 {
+        display: none;
+    }
+
+    .mainMobile {
+        display: inline-block;
+    }
+
+    .mobile {
+        display: inline;
+    }
+
+    .grid-container {
+        position: relative; 
+        width: 100%; 
+        margin: 7px 3px;
+    }
+
+    img {
+        max-width: 145px;
+        height: auto;
+        margin: -2px auto;
+        border-radius: 5px;
+    }
+    .cta {
+        margin-left: 140px;
+    }
+
+}   

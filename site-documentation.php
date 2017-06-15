@@ -42,7 +42,7 @@
                             <li>-Organizing that family party or event? Post messages on the open forum and/or reply to messages other family members have posted to keep everyone in sync!</li>   
                             <br>
                             <strong>Archive</strong>
-                            <li>-COMING SOON - Export contact info and family events to your phone/computer</li>
+                            <li>-Export family events to your phone/computer's calendar</li>
                             <li>-COMING SOON - Family stories, recipes, thoughts, or memories to share? Let this app be an archive for those important things!</li>
                             <li>-COMING SOON - With Dropbox integration, quickly access photos from past family events</li>
                             <br>
@@ -54,20 +54,18 @@
 
                         <h4>release notes</h4>
                         <br><br>
-                        <p><strong>Verison:</strong> 1.2.0</p>
+                        <p><strong>Verison:</strong> 1.3.0</p>
                         <p><strong>Notes:</strong> This is the open beta of Familink. As such, this site is, by no means, a final product. The following are some of the things I am aware of and/or working to fix:</p>
                         <br>
                         <ul> <strong>Bugs</strong>
                             <li>-When in the webapp, clicking "Cancel" while editing family members or events returns a user to the website</li>
-                            <li>-When adding family members, posting messages, and replies, site redirects to home and not previous page</li>
+                            <li>-When adding family members, posting messages, replies, and events, site redirects to home and not previous page</li>
                             <li>-While this is not a bug, it is a known issue...this app is hosted on a shared server, and may, at times, be slower than others. If the idea takes off, I will move it to a dedicated server for increased speed.</li>
                         </ul>
                         <br>
                         <ul>
                             <strong>Needed Features</strong>
-                            <li>-RSVP status for events</li>
                             <li>-List of Family Unit members</li>
-                            <li>-Datepicker on event creation page</li>
                             <li>-Better family creation workflow</li>
                             <li>-Export contact data to phone</li>
                             <li>-Archival capabilities</li>

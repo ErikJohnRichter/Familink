@@ -28,7 +28,6 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,900|Josefin+Sans:400,700' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|News+Cycle:400,700" rel="stylesheet">
 
-
 </head>
 <body id="mobile_wrap">
     <div id="page-loader"><span class="page-loader-gif">Loading...</span></div>

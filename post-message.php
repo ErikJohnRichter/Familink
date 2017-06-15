@@ -178,7 +178,7 @@
         $email = 'familink@codingerik.com';
         $subject = $senderFirst.' '.$senderLast.' just posted a new message in Familink!';
         $sendCopy = trim($_POST['sendCopy']);
-        $body = '<html><br>This is a notification that '.$senderFirst.' '.$senderLast.' just posted a new message in your family\'s Familink forum!<br><br>Message Subject: <strong>'.$_POST['message-title'].'</strong><br><br>To view this message, visit <a href="http://familink.codingerik.com">Familink</a> and click on Forum.<br></html>';
+        $body = '<html><br>This is a notification that '.$senderFirst.' '.$senderLast.' just posted a new message in your family\'s Familink forum!<br><br>Message Subject: <strong>'.$_POST['message-title'].'</strong><br><br>Message: '.nl2br(htmlspecialchars($_POST['message-body'], ENT_QUOTES)).'<br><br>To view this message, visit <a href="http://familink.codingerik.com">Familink</a> and click on Forum.<br></html>';
         $body .='<html><br><br>-----<br>This email was sent using <a href="http://familink.codingerik.com">Familink</a><br><br><small>To unsubscribe from these emails, please click the link above, edit your details, and uncheck "Subscribe"</small></html>';
         $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         //$headers .= 'From: ' .' <'.$email.'>' . "\r\n" . 'Reply-To: ' . $replyTo;

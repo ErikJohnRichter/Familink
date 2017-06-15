@@ -38,7 +38,8 @@
       
       //$thisMonth = "January";
       $thisMonth = date("F");
-      $today = date('d', strtotime("+2 hours"));
+      // THIS WAS +2 rather than -5 10/17
+      $today = date('d', strtotime("-6 hours"));
       $nextMonth = date('F', strtotime("+30 days"));
       $year = date("Y");
       $future = date("Y-m-d", strtotime("+60 days"));
@@ -76,20 +77,33 @@
                             die($ex); 
                         } 
                         echo '<table style="margin:0 auto; font-size: 20px; text-align: left">';
-                        echo '<tr><td><h2 style="font-size: 20px; padding-top: 20px; padding-bottom: 20px; text-decoration: underline;">FAMILY EVENTS</h2></td></tr>';
+                        echo '<tr><th colspan="2" align="center"><h2 style="font-size: 20px; padding-top: 20px; padding-bottom: 20px;">FAMILY EVENTS</h2></th></tr>';
                         
                         $rows = $stmt->fetchAll();
                         if ($rows) {
                             foreach ($rows as $x) {
 
-                                echo '<tr><td style="padding: 10px; text-align: left"><a href="event-details.php?id='.$x['id'].'" style="color: blue;">'.$x['event_name'].'</a></td>';
+                                echo '<tr>';
+
+                                
                                 
                                 if ($today == $x['event_date_day'] and $thisMonth == $x['event_date_month']) {
-                                echo '<td style="padding: 10px; text-align: left">TODAY!</td></tr>';
+                                echo '<td style="padding: 10px; text-align: left; vertical-align: middle;">TODAY!</td>';
                                 }
                                 else {
-                                echo '<td style="padding: 10px; text-align: left">'.$x['event_date_month'].' '.$x['event_date_day'].'</td></tr>';
+                                //echo '<td style="padding: 10px; text-align: left">'.$x['event_date_month'].' '.$x['event_date_day'].'</td></tr>';
+                                
+                                echo '<td style="vertical-align: middle; padding-bottom: 5px; padding-right: 19px;"><div class="post_date" style="left: 20px; height: 25px; width: 50px; ">'.
+                                      '<span class="day" style="font-size: 20px; line-height: 6px;">'.date('j', strtotime($x['timestamp'])+ 1 * 3600).'</span>'.
+                                       '<span class="month" style="line-height: 35px;">'.strtolower(date('M', strtotime($x['timestamp']))).'</span>'.
+                                       '</div></td>';
                                 }
+                                
+                                echo '<td style="padding: 10px; text-align: left;"><a href="event-details.php?id='.$x['id'].'" style="color: blue;">'.$x['event_name'].'</a></td>';
+                                
+                                
+
+                                echo '</tr>';
                                 
                               }
                             
@@ -141,17 +155,22 @@
                         { 
                             die($ex); 
                         } 
-                        echo '<tr><td><h2 style="font-size: 20px; padding-top: 20px; padding-bottom: 20px; text-decoration: underline;">BIRTHDAYS</h2></td></tr>';
+                        echo '<tr><th colspan="2" align="center"><h2 style="font-size: 20px; padding-top: 20px; padding-bottom: 20px;">BIRTHDAYS</h2></th></tr>';
                         
                         $rows = $stmt->fetchAll();
                         if ($rows) {
-                          echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></tr></td>';
+                          //echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></td></tr>';
                             foreach ($rows as $x) {
                               if (strpos($x['dob'], $thisMonth) !== false) {
                                 
                                 if ($today == $x['dob_day']) {
-                                echo '<tr><td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>'.
-                                '<td style="padding: 10px; text-align: left">TODAY!';
+                                echo '<tr>';
+                                
+                                echo '<td><h2 style="padding: 10px; text-align: left">TODAY!</h2>';
+                                
+                                echo '</td>';
+                                echo '<td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'];
+
                                 if ($x['dob_year'] != null) {
                                       $birthmonth = date('m', strtotime($x['dob_month']));
                                       $birthday = ($x['dob_year']).'-'.$birthmonth.'-'.$x['dob_day'];
@@ -171,11 +190,21 @@
                             else if ($x['home_phone'] != null) {
                               echo '&nbsp;&nbsp;<a href="tel:'.$x['home_phone'].'" class="external" ><img src="images/icons/blue/phone.png" alt="" title="" style="display: inline-block; margin-bottom: 0px; width: 20px;"/></a>';
                             }
-                                echo '</td></tr>';
+                                echo '</td>';
+                                echo '</tr>';
                                 }
                                 else {
-                                echo '<tr><td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>'.
-                                '<td style="padding: 10px; text-align: left">'.$x['dob'];
+                                echo '<tr>';
+                                
+                                echo '<td style="vertical-align: middle; padding-bottom: 5px;"><div class="post_date" style="left: 20px; height: 25px; width: 50px; ">'.
+                                      '<span class="day" style="font-size: 20px; line-height: 6px;">'.$x['dob_day'].'</span>'.
+                                       '<span class="month" style="line-height: 35px;">'.strtolower(substr($x['dob_month'], 0, 3)).'</span>'.
+                                       '</div>';
+
+                                //echo '<td style="padding: 10px; text-align: left">'.$x['dob'];
+                                
+                                echo '</td>';
+                                echo '<td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'];
                                 if ($x['dob_year'] != null) {
                                       $birthmonth = date('m', strtotime($x['dob_month']));
                                       $birthday = ($x['dob_year']-1).'-'.$birthmonth.'-'.$x['dob_day'];
@@ -188,18 +217,19 @@
                                       $howOld = $interval->format('%y');
                                       echo ' - <i>'.$howOld.'</i>';
                                 }
-                                echo '</td></tr>';
+                                echo '</td>';
+                                echo '</tr>';
                                 }
                                 
                               }
                             }
                             
                         }
-                        else {
+                        /*else {
                           echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></tr></td>';
                             echo '<tr><td style="padding: 10px; text-align: left">No more!</td>';
                              echo '<td style="padding: 10px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>';
-                        }
+                        }*/
 
                         $query = " 
                             SELECT 
@@ -229,12 +259,21 @@
                         
                         $rowz = $stmt->fetchAll();
                         if ($rowz) {
-                          echo '<tr><td><h2 style="font-size: 20px; padding-bottom: 10px; padding-top: 20px;">'.$nextMonth.'</h2></td></tr>';
+                          //echo '<tr><td><h2 style="font-size: 20px; padding-bottom: 10px; padding-top: 20px;">'.$nextMonth.'</h2></td></tr>';
                             foreach ($rowz as $y) {
                               if (strpos($y['dob'], $nextMonth) !== false) {
                                 
-                                echo '<tr><td style="padding: 10px; text-align: left">'.$y['first_name'].' '.$y['last_name'].'</td>'.
-                                '<td style="padding: 10px; text-align: left">'.$y['dob'];
+                                echo '<tr>';
+                                
+                                echo '<td style="vertical-align: middle; padding-bottom: 5px;"><div class="post_date" style="left: 20px; height: 25px; width: 50px; ">'.
+                                      '<span class="day" style="font-size: 20px; line-height: 6px;">'.$y['dob_day'].'</span>'.
+                                       '<span class="month" style="line-height: 35px;">'.strtolower(substr($y['dob_month'], 0, 3)).'</span>'.
+                                       '</div>';
+
+                                //echo '<td style="padding: 10px; text-align: left">'.$y['dob'];
+                                
+                                echo '</td>';
+                                echo '<td style="padding: 10px; text-align: left">'.$y['first_name'].' '.$y['last_name'];
                                 if ($y['dob_year'] != null) {
                                       $birthmonth2 = date('m', strtotime($y['dob_month']));
                                       $birthday2 = ($y['dob_year']-1).'-'.$birthmonth2.'-'.$y['dob_day'];
@@ -247,22 +286,23 @@
                                       $howMany = $interval2->format('%y');
                                       echo ' - <i>'.$howMany.'</i>';
                                 }
-                                echo '</td></tr>';
+                                echo '</td>';
+                                echo '</tr>';
                               }
                             }
                             
                         }
-                        else {
+                        /*else {
                           echo '<tr><td><h2 style="font-size: 20px; padding-bottom: 10px; padding-top: 20px;">'.$nextMonth.'</h2></td></tr>';
                             echo '<tr><td style="padding: 10px; text-align: left">No birthdays</td>';
                             echo '<td style="padding: 10px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>';
-                        }
+                        }*/
 
                         ?>
 
 
                         <tr><td><br><hr></td><td><br><hr></td></tr>
-                        <tr><td><h2 style="font-size: 20px; padding-top: 40px; padding-bottom: 20px; text-decoration: underline;">ANNIVERSARIES</h2></td></tr>
+                        <tr><th colspan="2" align="center"><h2 style="font-size: 20px; padding-top: 40px; padding-bottom: 20px;">ANNIVERSARIES</h2></th></tr>
       
       <?php
       
@@ -298,28 +338,39 @@
                         
                         $rows = $stmt->fetchAll();
                         if ($rows) {
-                          echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></tr></td>';
+                          //echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></td></tr>';
                             foreach ($rows as $x) {
                               if (strpos($x['anniversary'], $thisMonth) !== false) {
                                 if ($x['anniversary_day'] >= $today) {
                                     if ($today == $x['anniversary_day']) {
-                                    echo '<tr><td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>'.
-                                    '<td style="padding: 10px; text-align: left">TODAY!</td></tr>';
+                                    echo '<tr>';
+                                    
+                                    echo '<td><h2 style="padding: 10px; text-align: left">TODAY!</h2></td>';
+                                    echo '<td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>';
+                                    echo '</tr>';
                                     }
                                     else {
-                                    echo '<tr><td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>'.
-                                    '<td style="padding: 10px; text-align: left">'.$x['anniversary'].'</td></tr>';
+                                    echo '<tr>';
+                                    
+                                    echo '<td style="vertical-align: middle; padding-bottom: 5px;"><div class="post_date" style="left: 20px; height: 25px; width: 50px; ">'.
+                                      '<span class="day" style="font-size: 20px; line-height: 6px;">'.$x['anniversary_day'].'</span>'.
+                                       '<span class="month" style="line-height: 35px;">'.strtolower(substr($x['anniversary_month'], 0, 3)).'</span>'.
+                                       '</div></td>';
+
+                                    //echo '<td style="padding: 10px; text-align: left">'.$x['anniversary'].'</td>';
+                                    echo '<td style="padding: 10px; text-align: left">'.$x['first_name'].' '.$x['last_name'].'</td>';
+                                    echo '</tr>';
                                     }
                                 }
                               }
                             }
                             
                         }
-                        else {
-                          echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></tr></td>';
-                            echo '<tr><td style="padding: 10px; text-align: left">No more!</td>';
+                        /*else {
+                          echo '<tr><td><h2 style="font-size: 20px;padding-bottom: 10px;">'.$thisMonth.'</h2></td></tr>';
+                            echo '<tr><td style="padding: 10px; text-align: left">None</td>';
                             echo '<td style="padding: 10px; text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>';
-                        }
+                        }*/
 
                         $query = " 
                             SELECT 
@@ -349,12 +400,19 @@
                         
                         $rowz = $stmt->fetchAll();
                         if ($rowz) {
-                          echo '<tr><td><h2 style="font-size: 20px; padding-bottom: 10px; padding-top: 20px;">'.$nextMonth.'</h2></td></tr>';
+                          //echo '<tr><td><h2 style="font-size: 20px; padding-bottom: 10px; padding-top: 20px;">'.$nextMonth.'</h2></td></tr>';
                             foreach ($rowz as $y) {
                               if (strpos($y['anniversary'], $nextMonth) !== false) {
                                 
-                                echo '<tr><td style="padding: 10px; text-align: left">'.$y['first_name'].' '.$y['last_name'].'</td>'.
-                                '<td style="padding: 10px; text-align: left">'.$y['anniversary'].'</td></tr>';
+                                echo '<tr>';
+                                
+                                echo '<td style="vertical-align: middle; padding-bottom: 5px;"><div class="post_date" style="left: 20px; height: 25px; width: 50px; ">'.
+                                      '<span class="day" style="font-size: 20px; line-height: 6px;">'.$y['anniversary_day'].'</span>'.
+                                       '<span class="month" style="line-height: 35px;">'.strtolower(substr($y['anniversary_month'], 0, 3)).'</span>'.
+                                       '</div></td>';
+                                //echo '<td style="padding: 10px; text-align: left">'.$y['anniversary'].'</td>';
+                                echo '<td style="padding: 10px; text-align: left">'.$y['first_name'].' '.$y['last_name'].'</td>';
+                                echo '</tr>';
                               }
                             }
                             

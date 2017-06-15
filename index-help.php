@@ -60,7 +60,8 @@ require("common.php");
           <div class="feat_small_details">
           <h4>Organize</h4>
           -Post custom events or parties, with their details, and have included members get notified when you do!<br><br>
-          -Organizing that family party or event? Post messages on the open forum and/or reply to messages other family members have posted to keep everyone in sync!                
+          -Organizing that family party or event? Post messages on the open forum and/or reply to messages other family members have posted to keep everyone in sync!<br><br>               
+          -Export family events to your phone/computer's calendar!
           </div>
           </li>
 

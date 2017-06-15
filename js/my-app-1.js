@@ -406,11 +406,13 @@ $$(document).on('pageInit', function (e) {
 	            document.getElementById("rsvpYes").disabled = false;
 	            document.getElementById("rsvpNo").disabled = false;
 	            document.getElementById("rsvpMaybe").disabled = false;
+	            document.getElementById("guestsSelect").disabled = false;
 	        }
 	        else {
 	            document.getElementById("rsvpYes").disabled = true;
 	            document.getElementById("rsvpNo").disabled = true;
 	            document.getElementById("rsvpMaybe").disabled = true;
+	            document.getElementById("guestsSelect").disabled = true;
 	        }
 	        
 	    }).trigger('change');

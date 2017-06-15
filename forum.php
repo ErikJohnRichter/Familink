@@ -103,8 +103,8 @@
                         else {
                             echo '<div class="post_date">';
                         }
-
-                            echo '<span class="day" >'.date('j', strtotime($y['timestamp'])+ 2 * 3600).'</span>'.
+                            //Is this correct? +2? Check 
+                            echo '<span class="day" >'.date('j', strtotime($y['timestamp'])+ 1 * 3600).'</span>'.
                             '<span class="month">'.strtolower(date('M', strtotime($y['timestamp']))).'</span>'.
 
                         '</div>'.

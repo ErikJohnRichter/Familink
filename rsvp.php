@@ -123,12 +123,14 @@
                 INSERT INTO event_rsvp ( 
                     event_id,
                     yes,
-                    family_id
+                    family_id,
+                    guests
                     
                 ) VALUES ( 
                     :eventid,
                     :yes,
-                    :familyid
+                    :familyid,
+                    :guests
                     
                 ) 
                 "; 
@@ -136,7 +138,8 @@
                 $query_params = array( 
                     ':eventid' => $_POST['event-id'],
                     ':yes' => nl2br(htmlspecialchars($_POST['rsvp'], ENT_QUOTES)),
-                    ':familyid' => $_SESSION['family_id']
+                    ':familyid' => $_SESSION['family_id'],
+                    ':guests' => $_POST['guests']
                     
                 ); 
                  
@@ -183,12 +186,14 @@
                 INSERT INTO event_rsvp ( 
                     event_id,
                     yes,
-                    family_id
+                    family_id,
+                    guests
                     
                 ) VALUES ( 
                     :eventid,
                     :yes,
-                    :familyid
+                    :familyid,
+                    :guests
                     
                 ) 
                 "; 
@@ -196,7 +201,8 @@
                 $query_params = array( 
                     ':eventid' => $_POST['event-id'],
                     ':yes' => nl2br(htmlspecialchars($_POST['rsvp'], ENT_QUOTES)),
-                    ':familyid' => $_SESSION['family_id']
+                    ':familyid' => $_SESSION['family_id'],
+                    ':guests' => $_POST['guests']
                     
                 ); 
                  
@@ -213,6 +219,66 @@
 
             else if ($yes) {
 
+                $query = " 
+                DELETE 
+                FROM event_rsvp
+                WHERE 
+                    event_id = :eventid AND
+                    yes = :yes AND
+                    family_id = :id
+                "; 
+                 
+                $query_params = array( 
+                    ':eventid' => $_POST['event-id'],
+                    ':yes' => nl2br(htmlspecialchars($_POST['rsvp'], ENT_QUOTES)),
+                    ':id' => $_SESSION['family_id'] 
+                ); 
+                 
+                try 
+                { 
+                    $stmt = $db->prepare($query); 
+                    $result = $stmt->execute($query_params); 
+                } 
+                catch(PDOException $ex) 
+                { 
+                    die($ex); 
+                } 
+
+
+                $query = " 
+                INSERT INTO event_rsvp ( 
+                    event_id,
+                    yes,
+                    family_id,
+                    guests
+                    
+                ) VALUES ( 
+                    :eventid,
+                    :yes,
+                    :familyid,
+                    :guests
+                    
+                ) 
+                "; 
+                 
+                $query_params = array( 
+                    ':eventid' => $_POST['event-id'],
+                    ':yes' => nl2br(htmlspecialchars($_POST['rsvp'], ENT_QUOTES)),
+                    ':familyid' => $_SESSION['family_id'],
+                    ':guests' => $_POST['guests']
+                    
+                ); 
+                 
+                try 
+                { 
+                    $stmt = $db->prepare($query); 
+                    $result = $stmt->execute($query_params); 
+                } 
+                catch(PDOException $ex) 
+                { 
+                    die($ex);
+                } 
+
             }
 
             else {
@@ -221,12 +287,14 @@
                 INSERT INTO event_rsvp ( 
                     event_id,
                     yes,
-                    family_id
+                    family_id,
+                    guests
                     
                 ) VALUES ( 
                     :eventid,
                     :yes,
-                    :familyid
+                    :familyid,
+                    :guests
                     
                 ) 
                 "; 
@@ -234,7 +302,8 @@
                 $query_params = array( 
                     ':eventid' => $_POST['event-id'],
                     ':yes' => nl2br(htmlspecialchars($_POST['rsvp'], ENT_QUOTES)),
-                    ':familyid' => $_SESSION['family_id']
+                    ':familyid' => $_SESSION['family_id'],
+                    ':guests' => $_POST['guests']
                     
                 ); 
                  

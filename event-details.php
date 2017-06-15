@@ -66,22 +66,37 @@ $eventId = $_GET["id"];
                     echo '<br><strong>Details: </strong><br><br>'.$x['event_description'].'<br>';
                     
                     echo '<div style="float:right;">
-           <form action="edit-event.php" method="post" style="display: inline-block;">
-          <input type="hidden" name="event-id" value="'.$eventId.'" >
+           
+          
+          <!--<form id="exportToCalendar" class="external" action="export-to-calendar.php" method="post">
+          <input type="hidden" name="cal-event-name" value="'.$x['event_name'].'">
+          <input type="hidden" name="cal-event-description" value="'.$x['event_description'].'">
+          <input type="hidden" name="cal-event-location" value="'.$x['event_location'].'">
+          <input type="hidden" name="cal-event-start" value="'.$x['timestamp'].'">
+          <input type="hidden" name="cal-event-time" value="'.$x['event_time_start'].'">
+          <input type="hidden" name="cal-event-am-pm" value="'.$x['am_pm'].'">
+          <button type="submit" class="button" style="display: inline-block; width: 100px;">Export</button>
+          </form>-->
+          <a href="http://familink.codingerik.com/export-to-calendar.php?cal-event-start='.$x['timestamp'].'&cal-event-name='.$x['event_name'].'&cal-event-time='.$x['event_time_start'].'&cal-event-am-pm='.$x['am_pm'].'&cal-event-description='.$x['event_description'].'&cal-event-location='.$x['event_location'].'" class="external button" style="display: inline-block; width: 100px; font-weight: 400; margin-bottom:10px;">Export</a>
+          <br>
+          <form action="edit-event.php" method="post" style="display: inline-block;">
+          <input style= "padding-top: 3px;" type="hidden" name="event-id" value="'.$eventId.'" >
           <button type="submit" class="button" style="display: inline-block; width: 100px;">Edit Event</button>&nbsp;&nbsp;
           </form>
+
+
           <br><br>
         </div>';
         echo '<div class="clear"></div>'; 
                     echo '<hr>';
                     echo '<br>';
-                    echo '<form action="rsvp.php" target="frame" method="post">';
+                    echo '<form action="rsvp.php" method="post">';
 
                     echo '<table style="width: 100%;">';
                     echo '<thead><td align="center" style="margin: 0 auto;"><h2 style="font-size: 20px; margin-bottom: 5px;">Guest List</h2><td></thead>';
                     echo '<tbody>';
                     
-                    echo '<tr><td><strong>Yes</strong></td></tr>';
+                    
                     $query = " 
                             SELECT 
                                 * 
@@ -107,10 +122,25 @@ $eventId = $_GET["id"];
                         } 
                          
                         $rowz = $stmt->fetchAll();
-
+                        $person = 0;
+                        $guests = 0;
                         if($rowz) {
                           foreach($rowz as $c) {
-                            echo '<tr><td>'.$c['yes'].'</td></tr>';
+                            if ($c['yes'] != null) {
+                              $person = $person + 1;
+                              $guests = $guests + $c['guests'];
+                            }
+                          }
+                        }
+                    echo '<tr><td><strong>Yes - '.($person + $guests).'</strong></td></tr>';
+                        if($rowz) {
+                          foreach($rowz as $c) {
+                            if ($c['guests'] != 0) {
+                              echo '<tr><td>'.$c['yes'].' +'.$c['guests'].'</td></tr>';
+                            }
+                            else {
+                              echo '<tr><td>'.$c['yes'].'</td></tr>';
+                            }
                           }
                         }
 
@@ -208,11 +238,27 @@ $eventId = $_GET["id"];
                     echo '</select></td></tr>';
 
                     echo '<tr><td><input type="hidden" name="event-id" value="'.$eventId.'"></td></tr>';
+
+                    echo '<tr align="center" style="margin: 0 auto;"><td>';
+                    echo '<select class="form-control button email select" id="guestsSelect" name="guests" style="width: 200px; margin-bottom: 5px;">';
+                    echo '<option value="0" selected="selected">+ Guests</option>';
+                    echo '<option value="1">1</option>';
+                    echo '<option value="2">2</option>';
+                    echo '<option value="3">3</option>';
+                    echo '<option value="4">4</option>';
+                    echo '<option value="5">5</option>';
+                    echo '<option value="6">6</option>';
+                    echo '<option value="7">7</option>';
+                    echo '<option value="8">8</option>';
+                    echo '</select>';
+                    echo '</tr>';
+
                     echo '<tr align="center" style="margin: 0 auto;">';
                     echo '<td><button type="submit" onClick="window.location.reload()" id="rsvpYes" name="action" value="yes" class="button button-green" style="display: inline-block; width: 63px;">Yes</button>';
                     echo '&nbsp;<button type="submit" id="rsvpNo" name="action" value="no" class="button button-red" style="display: inline-block; width: 63px;">No</button>';
                     echo '&nbsp;<button type="submit" id="rsvpMaybe" name="action" value="maybe" class="button" style="display: inline-block; width: 65px;">Maybe</button></td>';
                     echo '</tr>';
+                    
 
                     echo '</tbody>';
                     echo '</table>';

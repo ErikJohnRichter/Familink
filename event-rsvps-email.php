@@ -28,7 +28,7 @@
     if ($row) {
         foreach ($row as $z) {
 
-            $date = date("Y-m-d");
+            $date = date("Y-m-d", strtotime("+2 days"));
             //$datetime = date_create($date);
 
             $query = " 
